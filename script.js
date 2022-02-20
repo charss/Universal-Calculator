@@ -145,7 +145,23 @@ function myDeleteFunction() {
 
 function solve() {
 
-    // TODO: Solve for the multiple relocatable partitioning
+    var inputs = document.querySelectorAll("input[type=text]")
+    var empty_inputs = []
+
+    for (var i = 0; i < inputs.length; i++) {
+        var element = document.getElementById(inputs[i].id);
+        if (inputs[i].value == '') {
+            empty_inputs.push(inputs[i].id)
+            element.classList.add("empty");
+        } else {
+            element.classList.remove("empty");
+        }
+    }
+
+    if (empty_inputs.length != 0) {
+        return
+    }
+
     var history = document.getElementById("history")
     var table = document.getElementById("table");
     var os_size = document.getElementById("os_size").value
@@ -230,6 +246,25 @@ function solve() {
         curr_time += 1
         // myFunction("Queue:", queue);
         // myFunction("Work:", work_list);
+    }
+}
+
+function load() {
+    var inputs = document.querySelectorAll("input[type=text]")
+
+    for (var i = 0; i < inputs.length; i++) {
+        var element = document.getElementById(inputs[i].id);
+        element.setAttribute("onclick", function() {check(element)});
+        transport_select.setAttribute("onchange", function(){toggleSelect(transport_select_id);});
+    }
+}
+
+function check(element) {
+    console.log('CHECKING')
+    if (element.value == '') {
+        element.classList.add("empty");
+    } else {
+        element.classList.remove("empty");
     }
 }
 

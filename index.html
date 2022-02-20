@@ -5,19 +5,19 @@
         <script src="script.js"></script>
         
     </head>
-    <body class="d-flex justify-content-center align-items-center flex-column"">
+    <body class="d-flex justify-content-center align-items-center flex-column">
         <div class="d-flex justify-content-center flex-column parent">
             <h1>Memory Allocation Calculator</h1>
             
             <div class="given d-flex flex-column given mt-2 mb-2">
                 <label>
                     <span>OS Size:</span>
-                    <input type="text" class="input-size" name="os_size" id="os_size" value="" required>
+                    <input type="text" class="input-size" name="os_size" id="os_size" value="" onchange="check(this)">
                 </label>
 
                 <label>
                     <span>Memory Size:</span>
-                    <input type="text" class='input-size' name="memory_size" id="memory_size" value="" required>
+                    <input type="text" class='input-size' name="memory_size" id="memory_size" value="" onchange="check(this)">
                 </label>
             </div>
 
@@ -44,13 +44,13 @@
                     <tr id="job1">
                         <td>1</td>
                         <td>
-                            <input type="text" id="job_size_1" value="">
+                            <input type="text" id="job_size_1" onchange="check(this)">
                         </td>
                         <td>
-                            <input type="text" id="arrival_time_1" value="">
+                            <input type="text" id="arrival_time_1" onchange="check(this)">
                         </td>
                         <td>
-                            <input type="text" id="run_time_1" value="">
+                            <input type="text" id="run_time_1" onchange="check(this)">
                         </td>
                         <td>
                             <p id="time_started_1"></p>

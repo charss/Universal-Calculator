@@ -75,3 +75,7 @@ input[type=text] {
     padding-right: 1.5rem;
     margin-right: 0.75rem;
 }
+
+.empty {
+    border: 2px solid rgb(201, 20, 20) !important;
+}
