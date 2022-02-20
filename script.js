@@ -74,7 +74,10 @@ function myCreateFunction() {
     //         },
     //     ]
     // }
-    
+
+    if (document.getElementById("table").rows.length > 1) {
+        document.getElementById("delete-button").disabled = false;
+    }
 
     var table = document.getElementById("table");
     var row_count = table.rows.length;
@@ -129,11 +132,19 @@ function myCreateFunction() {
 }
 
 function myDeleteFunction() {
-  document.getElementById("table").deleteRow(-1);
+    if (document.getElementById("table").rows.length > 2) {
+        document.getElementById("table").deleteRow(-1);
+    } 
+    
+    if (document.getElementById("table").rows.length == 2) {
+        document.getElementById("delete-button").disabled = true;
+    }
+
+
 }
 
 function solve() {
-    
+
     // TODO: Solve for the multiple relocatable partitioning
     var history = document.getElementById("history")
     var table = document.getElementById("table");

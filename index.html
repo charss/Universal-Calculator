@@ -5,7 +5,7 @@
         <script src="script.js"></script>
         
     </head>
-    <body class="d-flex justify-content-center align-items-center flex-column">
+    <body class="d-flex justify-content-center align-items-center flex-column"">
         <div class="d-flex justify-content-center flex-column parent">
             <h1>Memory Allocation Calculator</h1>
             
@@ -23,7 +23,7 @@
 
             <div class="actions mb-2">
                 <button class='btn btn-primary' onclick="myCreateFunction()">Add row</button>
-                <button class='btn btn-danger' onclick="myDeleteFunction()">Delete row</button>
+                <button class='btn btn-danger' id='delete-button' onclick="myDeleteFunction()" disabled>Delete row</button>
                 <button class='btn btn-success' onclick="solve()">Solve</button>
             </div>
 
