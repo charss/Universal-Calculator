@@ -19,15 +19,27 @@ body {
     border-radius: 5px; 
 }
 
-table, th, td {
+.table {
     border: 1px solid black;
+    border-radius: 20px;
+}
+/* table, th, td {
+    border: 1px solid black !important;
     border-collapse: collapse;
+    text-align: center;
 }
 
+
 th, td {
+    padding: 0.5rem 1rem;
     padding-right: 1rem;
     padding-left: 1rem;
     text-align: center;
+} */
+
+table tbody tr td input {
+    max-width: 100px;
+    text-align: right;
 }
 
 #list li {
@@ -55,6 +67,12 @@ h1 {
     font-weight: bold;
 }
 
-.given label input {
+input[type=text] {
     padding: 0.25rem;
+}
+
+.actions button {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    margin-right: 0.75rem;
 }

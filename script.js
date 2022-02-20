@@ -10,6 +10,8 @@ function myCreateFunction() {
     var test = 1
 
     if (test == 1) {
+        document.getElementById('os_size').value = '56'
+        document.getElementById('memory_size').value = '256'
         values = [
             {
                 job_size: "30",
@@ -38,6 +40,8 @@ function myCreateFunction() {
             }
         ]
     } else if (test == 2) {
+        document.getElementById('os_size').value = '300'
+        document.getElementById('memory_size').value = '1024'
         values = [
             {
                 job_size: "450",
@@ -174,7 +178,7 @@ function solve() {
 
         // values.push(`${job_size} ${arrival_time} ${run_time}`)
         values.push(new_job)
-        myFunction("Jobs:", values);
+        // myFunction("Jobs:", values);
     }
 
 
@@ -224,34 +228,30 @@ function solve() {
         
 
         curr_time += 1
-        myFunction("Queue:", queue);
-        myFunction("Work:", work_list);
+        // myFunction("Queue:", queue);
+        // myFunction("Work:", work_list);
     }
-    // console.log(queue)
-
-    console.log(curr_time)
-    console.log("Current Memory Size: " + actual_memory)
 }
 
-function myFunction(title, object_value) {
-    var myJSON = ''
+// function myFunction(title, object_value) {
+//     var myJSON = ''
 
-    if (typeof object_value == 'object') {
-        var myJSON = JSON.stringify(object_value);
-    } else {
-        var myJSON = object_value
+//     if (typeof object_value == 'object') {
+//         var myJSON = JSON.stringify(object_value);
+//     } else {
+//         var myJSON = object_value
 
-    }
+//     }
 
-    // Create an "li" node:
-    const node = document.createElement("li");
+//     // Create an "li" node:
+//     const node = document.createElement("li");
 
-    // Create a text node:
-    const textnode = document.createTextNode(title + ' ' +myJSON);
+//     // Create a text node:
+//     const textnode = document.createTextNode(title + ' ' +myJSON);
 
-    // Append the text node to the "li" node:
-    node.appendChild(textnode);
+//     // Append the text node to the "li" node:
+//     node.appendChild(textnode);
 
-    // Append the "li" node to the list:
-    document.getElementById("list").appendChild(node);
-}
+//     // Append the "li" node to the list:
+//     document.getElementById("list").appendChild(node);
+// }

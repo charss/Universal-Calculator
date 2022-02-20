@@ -21,23 +21,51 @@
                 </label>
             </div>
 
-            <div class="mb-2">
+            <div class="actions mb-2">
                 <button class='btn btn-primary' onclick="myCreateFunction()">Add row</button>
                 <button class='btn btn-danger' onclick="myDeleteFunction()">Delete row</button>
                 <button class='btn btn-success' onclick="solve()">Solve</button>
             </div>
 
-            <table id="table">
-                <tr>
-                    <th>Job</th>
-                    <th>Job Size (K)</th>
-                    <th>Arrival Time</th>
-                    <th>Run Time</th>
-                    <th>Time Started</th>
-                    <th>Time Finished</th>
-                    <th>Waiting Time</th>
-                    <th>Memory Available After Job Allocation</th>
-                </tr>
+            <table class='table' id="table">
+                <thead>
+                    <tr>
+                        <th>Job</th>
+                        <th>Job Size (K)</th>
+                        <th>Arrival Time</th>
+                        <th>Run Time</th>
+                        <th>Time Started</th>
+                        <th>Time Finished</th>
+                        <th>Waiting Time</th>
+                        <th>Memory Available After Job Allocation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="job1">
+                        <td>1</td>
+                        <td>
+                            <input type="text" id="job_size_1" value="450">
+                        </td>
+                        <td>
+                            <input type="text" id="arrival_time_1" value="9:00">
+                        </td>
+                        <td>
+                            <input type="text" id="run_time_1" value="8">
+                        </td>
+                        <td>
+                            <p id="time_started_1"></p>
+                        </td>
+                        <td>
+                            <p id="time_finished_1"></p>
+                        </td>
+                        <td>
+                            <p id="waiting_time_1"></p>
+                        </td>
+                        <td>
+                            <p id="memory_1"></p>
+                        </td>
+                    </tr>
+                </tbody>
             </table>
             <ul id="list"></ul>
         </div>
