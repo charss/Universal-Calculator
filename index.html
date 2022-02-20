@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        
+    </head>
+    <body>
+        <h1>Memory Allocation Calculator</h1>
+
+        <div class="flex flex-column given">
+            <label for="os_size">OS Size:</label>
+            <input type="text" name="os_size" id="os_size" value="56">
+
+            <label for="memory_size">Memory Size:</label>
+            <input type="text" name="memory_size" id="memory_size" value="256">
+        </div>
+
+        <table id="table">
+            <tr>
+                <th>Job</th>
+                <th>Job Size (K)</th>
+                <th>Arrival Time</th>
+                <th>Run Time</th>
+                <th>Time Started</th>
+                <th>Time Finished</th>
+                <th>Waiting Time</th>
+                <th>Memory Available After Job Allocation</th>
+            </tr>
+        </table>
+        <button onclick="myCreateFunction()">Create row</button>
+        <button onclick="myDeleteFunction()">Delete row</button>
+        <button onclick="solve()">Solve</button>
+        <button onclick="count()">Count</button>
+        <script src="script.js"></script>
+        <ul id="list"></ul>
+    </body>
+</html>
