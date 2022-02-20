@@ -23,9 +23,7 @@ body {
     border: 1px solid black;
     border-radius: 20px;
 }
-/* table, th, td {
-    border: 1px solid black !important;
-    border-collapse: collapse;
+table, th, td {
     text-align: center;
 }
 
@@ -35,7 +33,8 @@ th, td {
     padding-right: 1rem;
     padding-left: 1rem;
     text-align: center;
-} */
+    vertical-align: middle;
+}
 
 table tbody tr td input {
     max-width: 100px;
