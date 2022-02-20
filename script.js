@@ -255,11 +255,3 @@ function myFunction(title, object_value) {
     // Append the "li" node to the list:
     document.getElementById("list").appendChild(node);
 }
-
-function count() {
-    var x = 0;
-    for (var i = 0; i < 5; i++) {
-        console.log(x)
-        x++
-    }
-}
