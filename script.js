@@ -1,91 +1,91 @@
 function myCreateFunction() {
-    var values = []
-    var test = 2
+    // var values = []
+    // var test = 2
 
-    if (test == 1) {
-        document.getElementById('os_size').value = "56"
-        document.getElementById('memory_size').value = "256"
-        document.getElementById('job_size_1').value = "30"
-        document.getElementById('arrival_time_1').value = "12:00"
-        document.getElementById('run_time_1').value = "10"
+    // if (test == 1) {
+    //     document.getElementById('os_size').value = "56"
+    //     document.getElementById('memory_size').value = "256"
+    //     document.getElementById('job_size_1').value = "30"
+    //     document.getElementById('arrival_time_1').value = "12:00"
+    //     document.getElementById('run_time_1').value = "10"
 
-        values = [
-            {
-                job_size: "30",
-                arrival_time: "12:00",
-                run_time: "10"
-            },
-            {
-                job_size: "150",
-                arrival_time: "12:05",
-                run_time: "15"
-            },
-            {
-                job_size: "50",
-                arrival_time: "12:05",
-                run_time: "15"
-            },
-            {
-                job_size: "20",
-                arrival_time: "12:10",
-                run_time: "20"
-            },
-            {
-                job_size: "170",
-                arrival_time: "12:12",
-                run_time: "5"
-            }
-        ]
-    } else if (test == 2) {
-        document.getElementById('os_size').value = "300"
-        document.getElementById('memory_size').value = "1024"
-        document.getElementById('job_size_1').value = "450"
-        document.getElementById('arrival_time_1').value = "9:00"
-        document.getElementById('run_time_1').value = "8"
+    //     values = [
+    //         {
+    //             job_size: "30",
+    //             arrival_time: "12:00",
+    //             run_time: "10"
+    //         },
+    //         {
+    //             job_size: "150",
+    //             arrival_time: "12:05",
+    //             run_time: "15"
+    //         },
+    //         {
+    //             job_size: "50",
+    //             arrival_time: "12:05",
+    //             run_time: "15"
+    //         },
+    //         {
+    //             job_size: "20",
+    //             arrival_time: "12:10",
+    //             run_time: "20"
+    //         },
+    //         {
+    //             job_size: "170",
+    //             arrival_time: "12:12",
+    //             run_time: "5"
+    //         }
+    //     ]
+    // } else if (test == 2) {
+    //     document.getElementById('os_size').value = "300"
+    //     document.getElementById('memory_size').value = "1024"
+    //     document.getElementById('job_size_1').value = "450"
+    //     document.getElementById('arrival_time_1').value = "9:00"
+    //     document.getElementById('run_time_1').value = "8"
 
-        values = [
-            {
-                job_size: "450",
-                arrival_time: "9:00",
-                run_time: "8"
-            },
-            {
-                job_size: "200",
-                arrival_time: "9:02",
-                run_time: "2"
-            },
-            {
-                job_size: "120",
-                arrival_time: "9:03",
-                run_time: "6"
-            },
-            {
-                job_size: "315",
-                arrival_time: "9:07",
-                run_time: "5"
-            },
-            {
-                job_size: "400",
-                arrival_time: "9:09",
-                run_time: "9"
-            },
-            {
-                job_size: "280",
-                arrival_time: "9:10",
-                run_time: "7"
-            },
-            {
-                job_size: "160",
-                arrival_time: "9:13",
-                run_time: "2"
-            },
-            {
-                job_size: "270",
-                arrival_time: "9:14",
-                run_time: "3"
-            },
-        ]
-    }
+    //     values = [
+    //         {
+    //             job_size: "450",
+    //             arrival_time: "9:00",
+    //             run_time: "8"
+    //         },
+    //         {
+    //             job_size: "200",
+    //             arrival_time: "9:02",
+    //             run_time: "2"
+    //         },
+    //         {
+    //             job_size: "120",
+    //             arrival_time: "9:03",
+    //             run_time: "6"
+    //         },
+    //         {
+    //             job_size: "315",
+    //             arrival_time: "9:07",
+    //             run_time: "5"
+    //         },
+    //         {
+    //             job_size: "400",
+    //             arrival_time: "9:09",
+    //             run_time: "9"
+    //         },
+    //         {
+    //             job_size: "280",
+    //             arrival_time: "9:10",
+    //             run_time: "7"
+    //         },
+    //         {
+    //             job_size: "160",
+    //             arrival_time: "9:13",
+    //             run_time: "2"
+    //         },
+    //         {
+    //             job_size: "270",
+    //             arrival_time: "9:14",
+    //             run_time: "3"
+    //         },
+    //     ]
+    // }
 
     if (document.getElementById("table").rows.length > 1) {
         document.getElementById("delete-button").disabled = false;
@@ -110,17 +110,17 @@ function myCreateFunction() {
             var new_input_id = "job_size_" + row_count
             newinputbox.setAttribute("id", new_input_id);
             newinputbox.setAttribute("onchange", "check(this)");
-            newinputbox.setAttribute("value", values[row_count - 1]["job_size"]);
+            // newinputbox.setAttribute("value", values[row_count - 1]["job_size"]);
         } else if (i == 2) {
             var new_input_id = "arrival_time_" + row_count
             newinputbox.setAttribute("id", new_input_id);
             newinputbox.setAttribute("onchange", "check(this)");
-            newinputbox.setAttribute("value", values[row_count - 1]["arrival_time"]);
+            // newinputbox.setAttribute("value", values[row_count - 1]["arrival_time"]);
         } else {
             var new_input_id = "run_time_" + row_count
             newinputbox.setAttribute("id", new_input_id);
             newinputbox.setAttribute("onchange", "check(this)");
-            newinputbox.setAttribute("value", values[row_count - 1]["run_time"]);
+            // newinputbox.setAttribute("value", values[row_count - 1]["run_time"]);
         }
         x.appendChild(newinputbox);
     }
