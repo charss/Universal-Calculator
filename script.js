@@ -159,7 +159,6 @@ function myDeleteFunction() {
 }
 
 function solve() {
-
     var inputs = document.querySelectorAll("input[type=text]")
     var empty_inputs = []
 
@@ -185,10 +184,8 @@ function solve() {
     var curr_time = 0;
     var values = []
     var queue = []
-    var started = false
     var work_list = [];
     var total_jobs = job_done = 0;
-    // var row_count = table.rows.length;   
 
     for (var i = 1; i < table.rows.length; i++) {
         var trs = table.getElementsByTagName("tr")[i]
@@ -202,24 +199,15 @@ function solve() {
             waiting_time: 0,
             memory: -1
         };
-        // var job_size = trs.cells[1].children[0].value
-        // var arrival_time = trs.cells[2].children[0].value
-        // var run_time = trs.cells[3].children[0].value
-        
 
-        // values.push(`${job_size} ${arrival_time} ${run_time}`)
         values.push(new_job)
-        // myFunction("Jobs:", values);
     }
 
 
     total_jobs = values.length 
 
-    // while (values.length > 0) {
     while (job_done != total_jobs) {
         for (var i = 0; i < values.length; i++) {
-            // console.log(parseInt(values[i].split(' ')[1].split(':')[1]))
-            // console.log(parseInt(values[i]['arrival_time']))
             if (parseInt(values[i]['arrival_time'].split(':')[1]) == curr_time) {
                 console.log("TIME:", curr_time)
                 queue.push(values[i])
@@ -242,7 +230,6 @@ function solve() {
                 queue[0]['time_started'] = curr_time
                 
                 work_list.push(queue[0])
-                // console.log(document.getElementById(`time_started_${queue[0]['job_num']}`))
                 document.getElementById(`time_started_${queue[0]['job_num']}`).innerHTML = curr_time
                 document.getElementById(`time_finished_${queue[0]['job_num']}`).innerHTML = queue[0]['time_finished']
                 document.getElementById(`waiting_time_${queue[0]['job_num']}`).innerHTML = queue[0]['waiting_time']
@@ -256,11 +243,7 @@ function solve() {
             }
         }
 
-        
-
         curr_time += 1
-        // myFunction("Queue:", queue);
-        // myFunction("Work:", work_list);
     }
 }
 
@@ -282,26 +265,3 @@ function check(element) {
         element.classList.remove("empty");
     }
 }
-
-// function myFunction(title, object_value) {
-//     var myJSON = ''
-
-//     if (typeof object_value == 'object') {
-//         var myJSON = JSON.stringify(object_value);
-//     } else {
-//         var myJSON = object_value
-
-//     }
-
-//     // Create an "li" node:
-//     const node = document.createElement("li");
-
-//     // Create a text node:
-//     const textnode = document.createTextNode(title + ' ' +myJSON);
-
-//     // Append the text node to the "li" node:
-//     node.appendChild(textnode);
-
-//     // Append the "li" node to the list:
-//     document.getElementById("list").appendChild(node);
-// }
