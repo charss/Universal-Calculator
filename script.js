@@ -210,18 +210,14 @@ function solve() {
     total_jobs = values.length 
 
     while (job_done != total_jobs) {
-        console.log('WORK LIST: ', work_list)
-        console.log('QUEUE: ', queue)
         for (var i = 0; i < values.length; i++) {
             if (parseInt(values[i]['arrival_time'].split(':')[1]) == curr_time) {
-                console.log("TIME:", curr_time)
                 queue.push(values[i])
             }
         }
 
         for (var i = 0; i < work_list.length; i++) {
             if (work_list[i]['run_time'] == 1 && work_list[i]['status'] == "not") {
-                console.log("JOB DONE")
                 actual_memory += work_list[i]['job_size']
                 work_list[i]['status'] = 'done'
                 job_done++;
@@ -238,13 +234,10 @@ function solve() {
                 work_list.push(queue[0])
 
                 if (time_unit == 'hour') {
-                    // console.log('RETURN: ', solveHour(queue[0]))
                     var x = solveHour(queue[0])
-                    console.log('ANSWERS: ', x)
                     queue[0]['time_started'] = x[0]
                     queue[0]['time_finished'] = x[1]
 
-                    // queue[0]['time_finished'] = x[1]
                 }
 
                 
@@ -267,7 +260,6 @@ function solve() {
 }
 
 function solveHour(job) {
-    console.log('FUNCTION')
     var time_started = `${job['arrival_time'].split(':')[0]}:`
     var mins = parseInt(job['arrival_time'].split(':')[1]) + job['waiting_time']
     if (mins < 10) {
@@ -306,7 +298,6 @@ function load() {
 }
 
 function check(element) {
-    console.log('CHECKING')
     if (element.value == '') {
         element.classList.add("empty");
     } else {
