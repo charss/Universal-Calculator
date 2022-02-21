@@ -22,9 +22,12 @@
             </div>
 
             <div class="actions mb-2">
-                <button class='btn btn-primary' onclick="myCreateFunction()">Add row</button>
-                <button class='btn btn-danger' id='delete-button' onclick="myDeleteFunction()" disabled>Delete row</button>
-                <button class='btn btn-success' onclick="solve()">Solve</button>
+                <div>
+                    <button class='btn btn-primary' onclick="myCreateFunction()">Add row</button>
+                    <button class='btn btn-danger' id='delete-button' onclick="myDeleteFunction()" disabled>Delete row</button>
+                    <button class='btn btn-success' onclick="solve()">Solve</button>
+
+                </div>
             </div>
 
             <table class='table' id="table">
@@ -32,7 +35,15 @@
                     <tr>
                         <th>Job</th>
                         <th>Job Size (K)</th>
-                        <th>Arrival Time</th>
+                        <th>
+                            Arrival Time<br>
+
+                            <label class='sub' for="unit">Unit:</label>
+                            <select name="unit" id="unit">
+                                <option value="hour">Hour</option>
+                                <option value="milli">Milliseconds</option>
+                            </select>
+                        </th>
                         <th>Run Time</th>
                         <th>Time Started</th>
                         <th>Time Finished</th>

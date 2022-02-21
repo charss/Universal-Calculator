@@ -226,12 +226,34 @@ function solve() {
         while (true && queue.length != 0) {
             if (queue[0]['job_size'] <= actual_memory) {
                 actual_memory -= queue[0]['job_size']
-                queue[0]['time_finished'] = curr_time + queue[0]['run_time']
-                queue[0]['time_started'] = curr_time
                 
                 work_list.push(queue[0])
-                document.getElementById(`time_started_${queue[0]['job_num']}`).innerHTML = curr_time
-                document.getElementById(`time_finished_${queue[0]['job_num']}`).innerHTML = queue[0]['time_finished']
+                var time_started = `${queue[0]['arrival_time'].split(':')[0]}:`
+                var mins = parseInt(queue[0]['arrival_time'].split(':')[1]) + queue[0]['waiting_time']
+                if (mins < 10) {
+                    time_started += `0${mins}`
+                } else {
+                    time_started += `${mins}`
+                }
+                
+                queue[0]['time_started'] = time_started
+                queue[0]['time_finished'] = parseInt(queue[0]['time_started'].split(':')[1]) + queue[0]['run_time']
+
+                var hour = parseInt(queue[0]['time_started'].split(':')[0])
+                mins = parseInt(queue[0]['time_started'].split(':')[1]) + queue[0]['run_time']
+                if (mins > 59) {
+                    hour += 1
+                    mins -= 60
+                }
+
+                if (mins < 10) {
+                    mins = `0${mins}`
+                } 
+                var time_finished = `${hour}:${mins}`
+
+                document.getElementById(`time_started_${queue[0]['job_num']}`).innerHTML = queue[0]['time_started']
+                
+                document.getElementById(`time_finished_${queue[0]['job_num']}`).innerHTML = time_finished
                 document.getElementById(`waiting_time_${queue[0]['job_num']}`).innerHTML = queue[0]['waiting_time']
                 document.getElementById(`memory_${queue[0]['job_num']}`).innerHTML = actual_memory
                 queue.shift()
