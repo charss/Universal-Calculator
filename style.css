@@ -79,3 +79,12 @@ input[type=text] {
 .empty {
     border: 2px solid rgb(201, 20, 20) !important;
 }
+
+.sub {
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+#unit {
+    font-size: 0.8rem;
+}
