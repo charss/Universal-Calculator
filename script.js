@@ -159,6 +159,7 @@ function myDeleteFunction() {
 }
 
 function solve() {
+    var time_unit = document.getElementById('unit').value
     var inputs = document.querySelectorAll("input[type=text]")
     var empty_inputs = []
 
@@ -187,6 +188,7 @@ function solve() {
     var work_list = [];
     var total_jobs = job_done = 0;
 
+
     for (var i = 1; i < table.rows.length; i++) {
         var trs = table.getElementsByTagName("tr")[i]
         var new_job = {
@@ -194,10 +196,11 @@ function solve() {
             job_size: parseInt(trs.cells[1].children[0].value),
             arrival_time: trs.cells[2].children[0].value,
             run_time: parseInt(trs.cells[3].children[0].value),
-            time_started: -1,
-            time_finished: -1,
+            time_started: '',
+            time_finished: '',
             waiting_time: 0,
-            memory: -1
+            memory: -1,
+            status: 'not'
         };
 
         values.push(new_job)
@@ -207,6 +210,8 @@ function solve() {
     total_jobs = values.length 
 
     while (job_done != total_jobs) {
+        console.log('WORK LIST: ', work_list)
+        console.log('QUEUE: ', queue)
         for (var i = 0; i < values.length; i++) {
             if (parseInt(values[i]['arrival_time'].split(':')[1]) == curr_time) {
                 console.log("TIME:", curr_time)
@@ -215,12 +220,15 @@ function solve() {
         }
 
         for (var i = 0; i < work_list.length; i++) {
-            if (work_list[i]['time_finished'] == curr_time) {
+            if (work_list[i]['run_time'] == 1 && work_list[i]['status'] == "not") {
                 console.log("JOB DONE")
                 actual_memory += work_list[i]['job_size']
+                work_list[i]['status'] = 'done'
                 job_done++;
+                work_list[i]['run_time'] -= 1
+            } else {
+                work_list[i]['run_time'] -= 1
             }
-
         }
 
         while (true && queue.length != 0) {
@@ -228,32 +236,21 @@ function solve() {
                 actual_memory -= queue[0]['job_size']
                 
                 work_list.push(queue[0])
-                var time_started = `${queue[0]['arrival_time'].split(':')[0]}:`
-                var mins = parseInt(queue[0]['arrival_time'].split(':')[1]) + queue[0]['waiting_time']
-                if (mins < 10) {
-                    time_started += `0${mins}`
-                } else {
-                    time_started += `${mins}`
+
+                if (time_unit == 'hour') {
+                    // console.log('RETURN: ', solveHour(queue[0]))
+                    var x = solveHour(queue[0])
+                    console.log('ANSWERS: ', x)
+                    queue[0]['time_started'] = x[0]
+                    queue[0]['time_finished'] = x[1]
+
+                    // queue[0]['time_finished'] = x[1]
                 }
+
                 
-                queue[0]['time_started'] = time_started
-                queue[0]['time_finished'] = parseInt(queue[0]['time_started'].split(':')[1]) + queue[0]['run_time']
-
-                var hour = parseInt(queue[0]['time_started'].split(':')[0])
-                mins = parseInt(queue[0]['time_started'].split(':')[1]) + queue[0]['run_time']
-                if (mins > 59) {
-                    hour += 1
-                    mins -= 60
-                }
-
-                if (mins < 10) {
-                    mins = `0${mins}`
-                } 
-                var time_finished = `${hour}:${mins}`
 
                 document.getElementById(`time_started_${queue[0]['job_num']}`).innerHTML = queue[0]['time_started']
-                
-                document.getElementById(`time_finished_${queue[0]['job_num']}`).innerHTML = time_finished
+                document.getElementById(`time_finished_${queue[0]['job_num']}`).innerHTML = queue[0]['time_finished']
                 document.getElementById(`waiting_time_${queue[0]['job_num']}`).innerHTML = queue[0]['waiting_time']
                 document.getElementById(`memory_${queue[0]['job_num']}`).innerHTML = actual_memory
                 queue.shift()
@@ -267,6 +264,35 @@ function solve() {
 
         curr_time += 1
     }
+}
+
+function solveHour(job) {
+    console.log('FUNCTION')
+    var time_started = `${job['arrival_time'].split(':')[0]}:`
+    var mins = parseInt(job['arrival_time'].split(':')[1]) + job['waiting_time']
+    if (mins < 10) {
+        time_started += `0${mins}`
+    } else {
+        time_started += `${mins}`
+    }
+
+    job['time_started'] = time_started
+    
+    job['time_finished'] = parseInt(job['time_started'].split(':')[1]) + job['run_time']
+
+    var hour = parseInt(job['time_started'].split(':')[0])
+    mins = parseInt(job['time_started'].split(':')[1]) + job['run_time']
+    if (mins > 59) {
+        hour += 1
+        mins -= 60
+    }
+
+    if (mins < 10) {
+        mins = `0${mins}`
+    } 
+    var time_finished = `${hour}:${mins}`
+
+    return [time_started, time_finished]
 }
 
 function load() {
