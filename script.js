@@ -173,10 +173,23 @@ function solve() {
         }
     }
 
+    var time_inputs = document.querySelectorAll('[id^="arrival_time"]');
+
+    if (time_unit == 'hour') {
+        for (var i = 0; i < time_inputs.length; i++) {
+            var x = time_inputs[i].value
+            if (x.length > 4 || !(x.includes(':'))) {
+                empty_inputs.push(time_inputs[i].id)
+                time_inputs[i].classList.add("empty");
+            } else {
+                time_inputs[i].classList.remove("empty");
+            }
+        }
+    } 
+
     if (empty_inputs.length != 0) {
         return
     }
-
     var history = document.getElementById("history")
     var table = document.getElementById("table");
     var os_size = document.getElementById("os_size").value
