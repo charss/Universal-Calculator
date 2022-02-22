@@ -88,3 +88,40 @@ input[type=text] {
 #unit {
     font-size: 0.8rem;
 }
+
+.tab, .addTab {
+    float: left;
+    padding: 0.75rem 1.7rem;
+    background: white;
+    color: red;
+    margin-right: 0.40rem;
+    cursor: pointer;
+    border-radius: 5px
+}
+
+.tab.selected {
+    padding: 0.9rem;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.tab:hover, .addTab:hover {
+    background: #E800C9;
+}
+
+.content {
+    width: 100%;
+    padding: 20px;
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+
+#tabContent1 {
+    display: block; 
+    border-top-left-radius: 0px;
+}
+
+#tabContent2, #tabContent3 {
+    display: none; 
+}
