@@ -125,3 +125,7 @@ input[type=text] {
 #tabContent2, #tabContent3 {
     display: none; 
 }
+
+.calcu-select {
+    width: 100%;
+}
