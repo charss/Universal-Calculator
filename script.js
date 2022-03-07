@@ -2,8 +2,8 @@ var current_tab = 'tabContent1'
 var calcu_list = [
     "-----------------",
     "Memory Allocation - Variable Partition",
-    "Caesar Cipher",
-    "Inverse Modulo",
+    // "Caesar Cipher",
+    // "Inverse Modulo",
     "Page Replacement Algorithms",
 ];
 
