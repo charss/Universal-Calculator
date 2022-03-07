@@ -310,20 +310,3 @@ function solveMilli(job) {
 
 }
 
-function load() {
-    var inputs = document.querySelectorAll("input[type=text]")
-
-    for (var i = 0; i < inputs.length; i++) {
-        var element = document.getElementById(inputs[i].id);
-        element.setAttribute("onclick", function() {check(element)});
-        transport_select.setAttribute("onchange", function(){toggleSelect(transport_select_id);});
-    }
-}
-
-function check(element) {
-    if (element.value == '') {
-        element.classList.add("empty");
-    } else {
-        element.classList.remove("empty");
-    }
-}

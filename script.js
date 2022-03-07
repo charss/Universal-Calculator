@@ -1,8 +1,10 @@
-var current_tab = 'test'
+var current_tab = 'tabContent1'
 var calcu_list = [
     "-----------------",
     "Memory Allocation - Variable Partition",
     "Caesar Cipher",
+    "Inverse Modulo",
+    "Page Replacement Algorithms",
 ];
 
 function selectTab(tabIndex) {
@@ -24,7 +26,7 @@ function selectTab(tabIndex) {
 }
 
 function addTab() {
-    var tab_count = document.getElementById('all-tab-buttons').getElementsByTagName('div').length
+    var tab_count = document.getElementById('all-tab-buttons').getElementsByClassName('tab').length + 1
 
     // Currently maximum 10 tabs allows for design issues
     if (tab_count > 10) {
@@ -33,29 +35,37 @@ function addTab() {
 
     // Adding a tab
     var div_button = document.createElement("div");
-    div_button.innerHTML += "Tab " + (tab_count); 
+    var div_button_name = document.createElement("div");
+    var tab_close_button = document.createElement('button')
+
+    tab_close_button.setAttribute('class', 'icon-button')
+    tab_close_button.innerHTML = '<i class="bi bi-x-lg"></i>'
+
+    div_button_name.setAttribute('id', `tabname${tab_count}`)
+    div_button_name.innerHTML += "Tab " + (tab_count); 
+
+    div_button.appendChild(div_button_name)
+    div_button.appendChild(tab_close_button)
+
+    
     div_button.setAttribute('class', 'tab')
     div_button.setAttribute('id', `tab${tab_count}`)
     div_button.setAttribute('onclick', 'selectTab(this)')
-
     document.getElementById('all-tab-buttons').insertBefore(div_button, document.getElementById('addTab'))
 
     // Adding the content
     var div = document.createElement("div");
     
-
     div.setAttribute('class', 'content')
     div.setAttribute('id', `tabContent${tab_count}`)
 
     var div_header = document.createElement('div');
 
-    var values = ["dog", "cat", "parrot", "rabbit"];
-
     var select = document.createElement("select");
     select.name = "calcu";
     select.id = "select" + tab_count
-    select.setAttribute('class', 'calcu-select')
-    select.setAttribute('onchange', 'test(this, this.value)')
+    select.setAttribute('class', 'calcu-select form-control form-select')
+    select.setAttribute('onchange', 'redirect(this, this.value)')
 
     for (const val of calcu_list) {
         var option = document.createElement("option");
@@ -80,12 +90,26 @@ function addTab() {
 }
 
 
-function test(element, select_value) {
+function redirect(element, select_value) {
     var x = `#divInclude${element.id.substring(6)}`
 
     if (select_value == 'Memory Allocation - Variable Partition') {
         $(x).load("memory_alloc.html");
     } else if (select_value == 'Caesar Cipher') {
         $(x).load("caesar_cipher.html");
+    } else if (select_value == 'Page Replacement Algorithms') {
+        $(x).load("page_replacements.html");
+    } else {
+        x.innerHTML = ''
+    }
+    document.getElementById('tabname' + element.id.substring(6)).innerHTML = select_value
+}
+
+function check(element) {
+    if (element.value == '') {
+        element.classList.add("empty");
+    } else {
+        element.classList.remove("empty");
+        
     }
 }
