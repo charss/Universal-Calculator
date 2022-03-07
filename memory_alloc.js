@@ -1,9 +1,10 @@
 function myCreateFunction() {
-    // var values = []
-    // var test = 2
+    const parentElement = document.querySelector('#' + current_tab);
+    let table = parentElement.querySelectorAll('table')[0]
 
-    // const parentElement = document.querySelector('#' + current_tab);
-    // let table = parentElement.querySelectorAll('table')[0]
+    // var values = []
+    // var test = 3
+
 
     // if (test == 1) {
     //     parentElement.querySelector('#os_size').value = '56'
@@ -88,6 +89,40 @@ function myCreateFunction() {
     //             run_time: "3"
     //         },
     //     ]
+    // } else if (test == 3) {
+    //     parentElement.querySelector('#os_size').value = '56'
+    //     parentElement.querySelector('#memory_size').value = '256'
+    //     parentElement.querySelector('#job_size_1').value = '30'
+    //     parentElement.querySelector('#arrival_time_1').value = '0'
+    //     parentElement.querySelector('#run_time_1').value = '10'
+
+    //     values = [
+    //         {
+    //             job_size: "30",
+    //             arrival_time: "0",
+    //             run_time: "10"
+    //         },
+    //         {
+    //             job_size: "150",
+    //             arrival_time: "5",
+    //             run_time: "15"
+    //         },
+    //         {
+    //             job_size: "50",
+    //             arrival_time: "5",
+    //             run_time: "15"
+    //         },
+    //         {
+    //             job_size: "20",
+    //             arrival_time: "10",
+    //             run_time: "20"
+    //         },
+    //         {
+    //             job_size: "170",
+    //             arrival_time: "12",
+    //             run_time: "5"
+    //         }
+    //     ]
     // }
 
     if (table.rows.length) {
@@ -112,17 +147,17 @@ function myCreateFunction() {
             var new_input_id = "job_size_" + row_count
             newinputbox.setAttribute("id", new_input_id);
             newinputbox.setAttribute("onchange", "check(this)");
-            newinputbox.setAttribute("value", values[row_count - 1]["job_size"]);
+            // newinputbox.setAttribute("value", values[row_count - 1]["job_size"]);
         } else if (i == 2) {
             var new_input_id = "arrival_time_" + row_count
             newinputbox.setAttribute("id", new_input_id);
             newinputbox.setAttribute("onchange", "check(this)");
-            newinputbox.setAttribute("value", values[row_count - 1]["arrival_time"]);
+            // newinputbox.setAttribute("value", values[row_count - 1]["arrival_time"]);
         } else {
             var new_input_id = "run_time_" + row_count
             newinputbox.setAttribute("id", new_input_id);
             newinputbox.setAttribute("onchange", "check(this)");
-            newinputbox.setAttribute("value", values[row_count - 1]["run_time"]);
+            // newinputbox.setAttribute("value", values[row_count - 1]["run_time"]);
         }
         x.appendChild(newinputbox);
     }
@@ -164,7 +199,6 @@ function myDeleteFunction() {
 function solve() {
     const parentElement = document.querySelector('#' + current_tab);
 
-    console.log(parentElement)
 
     var time_unit = parentElement.querySelector('[id="unit"]').value
     var inputs = parentElement.querySelectorAll("input[type=text]")
@@ -181,18 +215,36 @@ function solve() {
     }
 
     var time_inputs = parentElement.querySelectorAll('[id^="arrival_time"]');
+    console.log(time_unit)
 
     if (time_unit == 'hour') {
         for (var i = 0; i < time_inputs.length; i++) {
             var x = time_inputs[i].value
-            if (x.length > 4 || !(x.includes(':'))) {
+            if (!(x.includes(':'))) {
                 empty_inputs.push(time_inputs[i].id)
                 time_inputs[i].classList.add("empty");
             } else {
                 time_inputs[i].classList.remove("empty");
             }
         }
-    } 
+    } else if (time_unit == 'milli') {
+        for (var i = 0; i < time_inputs.length; i++) {
+            var x = time_inputs[i].value
+            if (isNaN(x)) {
+                empty_inputs.push(time_inputs[i].id)
+                time_inputs[i].classList.add("empty");
+            } else {
+                time_inputs[i].classList.remove("empty");
+
+            }
+            // if (!(x.includes(':'))) {
+            //     empty_inputs.push(time_inputs[i].id)
+            //     time_inputs[i].classList.add("empty");
+            // } else {
+            //     time_inputs[i].classList.remove("empty");
+            // }
+        }
+    }
 
     if (empty_inputs.length != 0) {
         return
@@ -232,8 +284,14 @@ function solve() {
 
     while (job_done != total_jobs) {
         for (var i = 0; i < values.length; i++) {
-            if (parseInt(values[i]['arrival_time'].split(':')[1]) == curr_time) {
-                queue.push(values[i])
+            if (time_unit == 'hour') {
+                if (parseInt(values[i]['arrival_time'].split(':')[1]) == curr_time) {
+                    queue.push(values[i])
+                }
+            } else {
+                if (parseInt(values[i]['arrival_time']) == curr_time) {
+                    queue.push(values[i])
+                }
             }
         }
 
@@ -258,7 +316,10 @@ function solve() {
                     var x = solveHour(queue[0])
                     queue[0]['time_started'] = x[0]
                     queue[0]['time_finished'] = x[1]
-
+                } else {
+                    var x = solveMilli(queue[0])
+                    queue[0]['time_started'] = x[0]
+                    queue[0]['time_finished'] = x[1]
                 }
 
                 parentElement.querySelector(`#time_started_${queue[0]['job_num']}`).innerHTML = queue[0]['time_started']
@@ -307,6 +368,12 @@ function solveHour(job) {
 }
 
 function solveMilli(job) {
+    console.log("MILLI")
+    var time_started = parseInt(`${job['arrival_time']}`) + job['waiting_time']
+    job['time_started'] = time_started
+    job['time_finished'] = time_started + job['run_time']
+    var time_finished = `${job['time_finished']}`
 
+    return [time_started, time_finished]
 }
 
