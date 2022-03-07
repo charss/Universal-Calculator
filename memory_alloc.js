@@ -1,94 +1,94 @@
 function myCreateFunction() {
-    var values = []
-    var test = 2
+    // var values = []
+    // var test = 2
 
-    const parentElement = document.querySelector('#' + current_tab);
-    let table = parentElement.querySelectorAll('table')[0]
+    // const parentElement = document.querySelector('#' + current_tab);
+    // let table = parentElement.querySelectorAll('table')[0]
 
-    if (test == 1) {
-        parentElement.querySelector('#os_size').value = '56'
-        parentElement.querySelector('#memory_size').value = '256'
-        parentElement.querySelector('#job_size_1').value = '30'
-        parentElement.querySelector('#arrival_time_1').value = '12:00'
-        parentElement.querySelector('#run_time_1').value = '10'
+    // if (test == 1) {
+    //     parentElement.querySelector('#os_size').value = '56'
+    //     parentElement.querySelector('#memory_size').value = '256'
+    //     parentElement.querySelector('#job_size_1').value = '30'
+    //     parentElement.querySelector('#arrival_time_1').value = '12:00'
+    //     parentElement.querySelector('#run_time_1').value = '10'
 
-        values = [
-            {
-                job_size: "30",
-                arrival_time: "12:00",
-                run_time: "10"
-            },
-            {
-                job_size: "150",
-                arrival_time: "12:05",
-                run_time: "15"
-            },
-            {
-                job_size: "50",
-                arrival_time: "12:05",
-                run_time: "15"
-            },
-            {
-                job_size: "20",
-                arrival_time: "12:10",
-                run_time: "20"
-            },
-            {
-                job_size: "170",
-                arrival_time: "12:12",
-                run_time: "5"
-            }
-        ]
-    } else if (test == 2) {
-        parentElement.querySelector('#os_size').value = '300'
-        parentElement.querySelector('#memory_size').value = '1024'
-        parentElement.querySelector('#job_size_1').value = '450'
-        parentElement.querySelector('#arrival_time_1').value = '9:00'
-        parentElement.querySelector('#run_time_1').value = '8'
+    //     values = [
+    //         {
+    //             job_size: "30",
+    //             arrival_time: "12:00",
+    //             run_time: "10"
+    //         },
+    //         {
+    //             job_size: "150",
+    //             arrival_time: "12:05",
+    //             run_time: "15"
+    //         },
+    //         {
+    //             job_size: "50",
+    //             arrival_time: "12:05",
+    //             run_time: "15"
+    //         },
+    //         {
+    //             job_size: "20",
+    //             arrival_time: "12:10",
+    //             run_time: "20"
+    //         },
+    //         {
+    //             job_size: "170",
+    //             arrival_time: "12:12",
+    //             run_time: "5"
+    //         }
+    //     ]
+    // } else if (test == 2) {
+    //     parentElement.querySelector('#os_size').value = '300'
+    //     parentElement.querySelector('#memory_size').value = '1024'
+    //     parentElement.querySelector('#job_size_1').value = '450'
+    //     parentElement.querySelector('#arrival_time_1').value = '9:00'
+    //     parentElement.querySelector('#run_time_1').value = '8'
 
-        values = [
-            {
-                job_size: "450",
-                arrival_time: "9:00",
-                run_time: "8"
-            },
-            {
-                job_size: "200",
-                arrival_time: "9:02",
-                run_time: "2"
-            },
-            {
-                job_size: "120",
-                arrival_time: "9:03",
-                run_time: "6"
-            },
-            {
-                job_size: "315",
-                arrival_time: "9:07",
-                run_time: "5"
-            },
-            {
-                job_size: "400",
-                arrival_time: "9:09",
-                run_time: "9"
-            },
-            {
-                job_size: "280",
-                arrival_time: "9:10",
-                run_time: "7"
-            },
-            {
-                job_size: "160",
-                arrival_time: "9:13",
-                run_time: "2"
-            },
-            {
-                job_size: "270",
-                arrival_time: "9:14",
-                run_time: "3"
-            },
-        ]
-    }
+    //     values = [
+    //         {
+    //             job_size: "450",
+    //             arrival_time: "9:00",
+    //             run_time: "8"
+    //         },
+    //         {
+    //             job_size: "200",
+    //             arrival_time: "9:02",
+    //             run_time: "2"
+    //         },
+    //         {
+    //             job_size: "120",
+    //             arrival_time: "9:03",
+    //             run_time: "6"
+    //         },
+    //         {
+    //             job_size: "315",
+    //             arrival_time: "9:07",
+    //             run_time: "5"
+    //         },
+    //         {
+    //             job_size: "400",
+    //             arrival_time: "9:09",
+    //             run_time: "9"
+    //         },
+    //         {
+    //             job_size: "280",
+    //             arrival_time: "9:10",
+    //             run_time: "7"
+    //         },
+    //         {
+    //             job_size: "160",
+    //             arrival_time: "9:13",
+    //             run_time: "2"
+    //         },
+    //         {
+    //             job_size: "270",
+    //             arrival_time: "9:14",
+    //             run_time: "3"
+    //         },
+    //     ]
+    // }
 
     if (table.rows.length) {
         parentElement.querySelector('[id="delete-button"]').disabled = false;
