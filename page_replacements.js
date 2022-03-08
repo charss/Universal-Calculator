@@ -100,7 +100,6 @@ function fifoAlgo(parentElement, ref_string, frame_count) {
         q.enqueue(i)
     }
 
-    parentElement.querySelector('#history').innerHTML = `START: ${q.elements}`
     for (let i = 0; i < ref_string.length; i++) {
         let element = ref_string[i]
         let position = -1
@@ -117,7 +116,6 @@ function fifoAlgo(parentElement, ref_string, frame_count) {
             pageFaults += 1
         }
 
-        parentElement.querySelector('#history').innerHTML += `<br>QUEUE: ${q.elements}`
         for (let j = 0; j < framesArray.length; j++) {
             if (j == position) {
                 let cell = parentElement.querySelector(`#frame${position}`).insertCell(-1)
@@ -147,7 +145,6 @@ function optimalAlgo(parentElement, ref_string, frame_count) {
         q.enqueue(i)
     }
 
-    parentElement.querySelector('#history').innerHTML = `START: ${q.elements}`
     for (let i = 0; i < ref_string.length; i++) {
         let element = ref_string[i]
         let position = -1
@@ -185,7 +182,6 @@ function optimalAlgo(parentElement, ref_string, frame_count) {
             pageFaults += 1
         }
 
-        parentElement.querySelector('#history').innerHTML += `<br>${i + 1} - LIST: ${JSON.stringify(framesArray, null, 2)} ${JSON.stringify(inFrame)}`
         for (let j = 0; j < frame_count; j++) {
             if (j == position) {
                 let cell = parentElement.querySelector(`#frame${position}`).insertCell(-1)
@@ -218,7 +214,6 @@ function lruAlgo(parentElement, ref_string, frame_count) {
         q.enqueue(i)
     }
 
-    parentElement.querySelector('#history').innerHTML = `START: ${q.elements}`
     for (let i = 0; i < ref_string.length; i++) {
         let element = ref_string[i]
         let position = -1
@@ -257,7 +252,6 @@ function lruAlgo(parentElement, ref_string, frame_count) {
             pageFaults += 1
         }
 
-        parentElement.querySelector('#history').innerHTML += `<br>${i + 1} - LIST: ${JSON.stringify(framesArray, null, 2)} ${JSON.stringify(inFrame)}`
         for (let j = 0; j < frame_count; j++) {
             if (j == position) {
                 let cell = parentElement.querySelector(`#frame${position}`).insertCell(-1)
